@@ -1,5 +1,5 @@
 import { App, Plugin } from 'obsidian';
-import {SearchModal} from "./suggester";
+import { SearchModal } from './suggester';
 //import type { SearchSettings } from './interfaces';
 //import SearchSettingTab from './settings';
 
@@ -18,9 +18,9 @@ export default class SearchPlugin extends Plugin {
 			id: 'query-google',
 			name: 'Query Google',
 			callback: () => {
-				return new SearchModal(this.app, this).open()
-			}
-		})
+				return new SearchModal(this.app, this).open();
+			},
+		});
 
 		//this.addSettingTab(new SearchSettingTab(this.app, this));
 	}

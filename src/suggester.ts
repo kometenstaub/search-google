@@ -1,14 +1,14 @@
-import {App, SuggestModal} from "obsidian";
-import type SearchPlugin from "./main";
-import {focus} from "./utils";
+import { App, SuggestModal } from 'obsidian';
+import type SearchPlugin from './main';
+import { focus } from './utils';
 
-export class SearchModal extends SuggestModal<string>{
-	plugin: SearchPlugin
+export class SearchModal extends SuggestModal<string> {
+	plugin: SearchPlugin;
 
 	constructor(app: App, plugin: SearchPlugin) {
 		super(app);
 		this.plugin = plugin;
-		this.setPlaceholder('Please enter the query...')
+		this.setPlaceholder('Please enter the query...');
 	}
 
 	onOpen() {
@@ -21,10 +21,9 @@ export class SearchModal extends SuggestModal<string>{
 
 	onChooseSuggestion(item: string, evt: MouseEvent | KeyboardEvent): void {
 		let url = 'https://www.google.com/search?&q=' + item;
-		url = encodeURI(url)
-		window.open(url)
+		url = encodeURI(url);
+		window.open(url);
 	}
-
 
 	renderSuggestion(value: string, el: HTMLElement): void {
 		const el0 = el.createDiv();
@@ -34,7 +33,7 @@ export class SearchModal extends SuggestModal<string>{
 		});
 		el0.createEl('div', {
 			text: value,
-			cls: ['search-plugin', 'search-query']
-		})
+			cls: ['search-plugin', 'search-query'],
+		});
 	}
 }
