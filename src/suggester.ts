@@ -16,7 +16,7 @@ export class SearchModal extends SuggestModal<string>{
 	}
 
 	getSuggestions(query: string): string[] {
-		return [`Search Google for: ${query}`];
+		return [query];
 	}
 
 	onChooseSuggestion(item: string, evt: MouseEvent | KeyboardEvent): void {
@@ -29,8 +29,12 @@ export class SearchModal extends SuggestModal<string>{
 	renderSuggestion(value: string, el: HTMLElement): void {
 		const el0 = el.createDiv();
 		const el1 = el0.createEl('b', {
+			text: 'Search Google for: ',
 			cls: ['search-plugin', 'search-engine'],
 		});
-		el1.appendText(value)
+		el0.createEl('div', {
+			text: value,
+			cls: ['search-plugin', 'search-query']
+		})
 	}
 }
