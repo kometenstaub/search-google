@@ -1,6 +1,6 @@
 {
 	"name": "Search Plugin",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Open a Google Search over a suggester.",
 	"main": "src/main.ts",
 	"scripts": {
