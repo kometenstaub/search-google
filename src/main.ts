@@ -1,34 +1,43 @@
 import { App, Plugin } from 'obsidian';
-import type { TemplateSettings } from './interfaces';
-import TemplateSettingTab from './settings';
+import {SearchModal} from "./suggester";
+//import type { SearchSettings } from './interfaces';
+//import SearchSettingTab from './settings';
 
-const DEFAULT_SETTINGS: TemplateSettings = {};
+//const DEFAULT_SETTINGS: SearchSettings = {};
 
-export default class TemplatePlugin extends Plugin {
+export default class SearchPlugin extends Plugin {
 	//@ts-ignore
-	settings: TemplateSettings;
+	//settings: SearchSettings;
 
 	async onload() {
-		console.log('loading ... plugin');
+		console.log('loading Search plugin');
 
-		await this.loadSettings();
+		//await this.loadSettings();
 
-		this.addSettingTab(new TemplateSettingTab(this.app, this));
+		this.addCommand({
+			id: 'query-google',
+			name: 'Query Google',
+			callback: () => {
+				return new SearchModal(this.app, this).open()
+			}
+		})
+
+		//this.addSettingTab(new SearchSettingTab(this.app, this));
 	}
 
 	onunload() {
-		console.log('unloading ... plugin');
+		console.log('unloading Search plugin');
 	}
 
-	async loadSettings() {
-		this.settings = Object.assign(
-			{},
-			DEFAULT_SETTINGS,
-			await this.loadData()
-		);
-	}
+	//async loadSettings() {
+	//	this.settings = Object.assign(
+	//		{},
+	//		DEFAULT_SETTINGS,
+	//		await this.loadData()
+	//	);
+	//}
 
-	async saveSettings() {
-		await this.saveData(this.settings);
-	}
+	//async saveSettings() {
+	//	await this.saveData(this.settings);
+	//}
 }
